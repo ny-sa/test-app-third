@@ -23,28 +23,20 @@ app.post('/', (req, res) => {
             FNAME: first,
             LNAME: last
           }
-        }]
-      },
+        }]},
     options = {
       url: 'https://us4.api.mailchimp.com/3.0/lists/07fb08d655',
-      method: 'POST',
       headers: {
-        'Authorization': 'nysa f7ba6e2a98dc0871a499704785168200-us4'
+        'Authorization':'nysa f7ba6e2a98dc0871a499704785168200-us4'
       },
-      body: JSON.stringify(data)
+      //body: JSON.stringify(data)
     };
   request(options, (error, response, body) => {
-    console.log(response.statusCode);
     if (error) res.sendFile(__dirname + '/failure.html');
-    else {
-      if (response.statusCode === 200) {res.sendFile(__dirname + '/success.html');}
-      else {res.sendFile(__dirname + '/failure.html');}
-    }
+    else if (response.statusCode === 200) res.sendFile(__dirname + '/success.html');
+    else res.sendFile(__dirname + '/failure.html');
   });
-});
 
-app.post('/failure', (req, res) => {
-  res.redirect('/');
 })
 
 app.listen(2020, () => {console.log('Server is running on port 2020')});
