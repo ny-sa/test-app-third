@@ -26,10 +26,10 @@ app.post('/', (req, res) => {
         }]
       },
     options = {
-      url: 'https://us4.api.mailchimp.com/3.0/lists/07fb08d655',
+      url: 'specific list',
       method: 'POST',
       headers: {
-        'Authorization': 'nysa f7ba6e2a98dc0871a499704785168200-us4'
+        'Authorization': 'nysa apikey'
       },
       body: JSON.stringify(data)
     };
